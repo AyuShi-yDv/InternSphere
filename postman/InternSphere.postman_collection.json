@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "InternSphere API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5000/api/health"
+      }
+    },
+    {
+      "name": "Register Student",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Test Student\", \"email\": \"student@example.com\", \"password\": \"Student@123\", \"role\": \"student\"}"
+        },
+        "url": "http://localhost:5000/api/auth/register"
+      }
+    },
+    {
+      "name": "Register Recruiter",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Demo Recruiter\", \"email\": \"recruiter@example.com\", \"password\": \"Recruiter@123\", \"role\": \"recruiter\"}"
+        },
+        "url": "http://localhost:5000/api/auth/register"
+      }
+    },
+    {
+      "name": "Register Admin (requires key)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Admin\", \"email\": \"admin@example.com\", \"password\": \"Admin@123\", \"role\": \"admin\", \"adminKey\": \"YOUR_ADMIN_SIGNUP_KEY\"}"
+        },
+        "url": "http://localhost:5000/api/auth/register"
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"student@example.com\", \"password\": \"Student@123\"}"
+        },
+        "url": "http://localhost:5000/api/auth/login"
+      }
+    },
+    {
+      "name": "List Internships",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5000/api/internships"
+      }
+    },
+    {
+      "name": "Search Internships",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5000/api/internships?q=react"
+      }
+    },
+    {
+      "name": "Create Internship",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer YOUR_TOKEN"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Frontend Developer Intern\", \"companyName\": \"Demo Labs\", \"category\": \"Web Development\", \"location\": \"Remote\", \"mode\": \"Remote\", \"duration\": \"3 Months\", \"stipend\": \"\\u20b915000/month\", \"openings\": 3, \"skills\": [\"React\", \"JavaScript\", \"Node.js\"], \"description\": \"Build production web features with the engineering team.\", \"eligibility\": \"Students with JavaScript fundamentals and React knowledge.\", \"applicationDeadline\": \"2026-12-31\", \"applicationUrl\": \"https://example.com/apply\"}"
+        },
+        "url": "http://localhost:5000/api/internships"
+      }
+    },
+    {
+      "name": "Apply",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer YOUR_STUDENT_TOKEN"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"internshipId\": \"INTERNSHIP_ID\"}"
+        },
+        "url": "http://localhost:5000/api/applications"
+      }
+    }
+  ]
+}
